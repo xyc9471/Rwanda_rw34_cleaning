@@ -22,7 +22,18 @@
 
 # PART 1: Setup work directory ------------------------------------------------
 
-  projectFolder     <- file.path("C:/Users/WB546716/Documents/GitHub/Rwanda_rw34_cleaning")
+  if (Sys.getenv("USERNAME") %in% c("wb501238", "WB501238")) {
+    
+    projectFolder  <- "C:/Users/WB501238/Documents/GitHub/R-Training"
+    
+  }
+
+  if (Sys.getenv("USERNAME") %in% c("wb546716", "WB546716")) {
+    
+    projectFolder  <- "C:/Users/WB546716/Documents/GitHub/Rwanda_rw34_cleaning"
+    
+  }
+
   dataWorkFolder    <- file.path(projectFolder, "DataWork")
   followupFolder    <- file.path(dataWorkFolder, "followup1")
   Data              <- file.path(followupFolder, "DataSets")
