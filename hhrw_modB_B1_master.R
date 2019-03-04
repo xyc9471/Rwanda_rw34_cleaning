@@ -41,16 +41,26 @@
   InterData         <- file.path(Data, "Intermediate")
 
 # PART 2: Load packages -------------------------------------------------------
+  
+  packages <- c("haven",
+                "sjmisc",
+                "stringr",
+                "reshape",
+                "reshape2",
+                "data.table",
+                "gtools",
+                "dplyr")
 
-  library(haven)
-  library(sjmisc)
-  library(stringr)
-  library(reshape)
-  library(reshape2)
-  library(data.table)
-  library(gtools)
-  library(dplyr)
-
+  sapply(packages, function(x) {
+    print(x)
+      if (x %in% installed.packages() == FALSE) {
+        install.packages(x, dependencies = TRUE) 
+      }
+      library(x, 
+              character.only = T)
+    }
+  )
+  
 # PART 3: Load data files -----------------------------------------------------
 
   hh_rw34 <- read_dta(file.path(DeidentifiedData,
