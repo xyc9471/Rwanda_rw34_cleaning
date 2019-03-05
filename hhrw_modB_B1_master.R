@@ -24,7 +24,7 @@
 
   if (Sys.getenv("USERNAME") %in% c("wb501238", "WB501238")) {
     
-    projectFolder  <- "C:/Users/WB501238/Documents/GitHub/R-Training"
+    projectFolder  <- "C:/Users/WB501238/Documents/GitHub/Rwanda_rw34_cleaning"
     
   }
 
