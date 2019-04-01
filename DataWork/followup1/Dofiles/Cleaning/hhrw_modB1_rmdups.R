@@ -11,7 +11,7 @@
 
   which(colnames(hh_rw34)=="b1hh_14a") # 1033, starting point of module B1
   which(colnames(hh_rw34)=="hh_15a_check") # 1474, ending point of module B1
-  hhrw_b1 <- hh_rw34[c(7,1044:1470)] # keeping only id_05 and module B1 
+  hhrw_b1 <- hh_rw34[c(7,1033:1474)] # keeping only id_05 and module B1 
 
 # PART 2: Correcting Names ------------------------------------------------------
   
@@ -20,6 +20,8 @@
   df <- hhrw_b1[names(hhrw_b1)[substr(names(hhrw_b1),1,1) == "v"]] # so we know how many names need to be corrected
 
 # 2) extract attributes labels and replace the names ----------------------------
+  
+  rm(list) # remove the list used in module b
   
   for (var in hhrw_b1[names(hhrw_b1)[substr(names(hhrw_b1),1,1) == "v"]]) {
     label <- str_replace(attr(var,"label"), "B1HH", "b1hh") # the right names are stored in attibutes

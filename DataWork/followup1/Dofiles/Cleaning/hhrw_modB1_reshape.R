@@ -10,20 +10,20 @@
 # PART 1: Sorting data and extract variables by group  -------------------------------
 
 # 1) Sorting the table ---------------------------------------------------------------
-  hhrwb1=hhrw_b1[5:436] # subset anything else EXCEPT id_05 and variables DO NOT needed to be reshaped
-  hhrwb1_exp = hhrw_b1[,c(1:4,437:444)] # subset id_05 and variables DO NOT needed to be reshaped
+  hhrwb1=hhrw_b1[4:435] # subset anything else EXCEPT id_05 and variables DO NOT needed to be reshaped
+  hhrwb1_exp = hhrw_b1[,c(1:3,436:443)] # subset id_05 and variables DO NOT needed to be reshaped
   hhrwb1_ordered <- hhrwb1[,mixedsort(colnames(hhrwb1))] # sort variables needed to be reshaped in alphabetical and ascending order
-  hhrwb1_ordered=cbind(hhrwb1_exp[1:12],hhrwb1_ordered) # combine the sorted table with id_05 and variables DO NOT needed to be reshaped
+  hhrwb1_ordered=cbind(hhrwb1_exp[1:11],hhrwb1_ordered) # combine the sorted table with id_05 and variables DO NOT needed to be reshaped
 
 # 2) Extracting the variables under each group ---------------------------------------
   
 # Step 1: deleting the last integer indicating the family member, left with, for example, hh_07_ or hh_07
-  colnames(hhrwb1_ordered)[13:444] = substr(colnames(hhrwb1_ordered)[13:444], 1, 
-                                          nchar(colnames(hhrwb1_ordered)[13:444])-2)
+  colnames(hhrwb1_ordered)[12:443] = substr(colnames(hhrwb1_ordered)[12:443], 1, 
+                                          nchar(colnames(hhrwb1_ordered)[12:443])-2)
   
 # Step 2: deleting the last underscore ("_")
   
-  for (i in 1:444) {
+  for (i in 1:443) {
     x=colnames(hhrwb1_ordered)[i]
     if (substring(x,nchar(x))=="_") {
       colnames(hhrwb1_ordered)[i] = substr(colnames(hhrwb1_ordered)[i], 1, 
@@ -95,7 +95,6 @@
 # PART 4: removing empty rows from 13:16 --------------------------------------------------------
   
   modB1_long = modB1_long[!modB1_long$member_id > 12,]
-  modB1_long = subset(modB1_long, select = -c(start_mod_b1))
   
 # PART 5: export the long-format data file ------------------------------------------------------
   
