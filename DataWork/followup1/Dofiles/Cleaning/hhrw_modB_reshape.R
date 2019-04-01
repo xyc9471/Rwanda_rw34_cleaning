@@ -95,6 +95,8 @@
                                    "b1hh_14", 
                                    "old_membpresent"))
   
+  hhrw_unique <- hhrw_unique[!duplicated(hhrw_unique$id_05),] # delete the id_05 duplicates
+  
 # 2) Merge to the long-format data frame hhrw_long ----------------------------------------------
   
   modB_long <- merge(modB_long, hhrw_unique, by = c("id_05"), all = T) 

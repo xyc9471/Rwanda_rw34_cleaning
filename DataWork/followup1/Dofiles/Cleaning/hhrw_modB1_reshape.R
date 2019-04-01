@@ -14,7 +14,7 @@
   hhrwb1_exp = hhrw_b1[,c(1:3,436:443)] # subset id_05 and variables DO NOT needed to be reshaped
   hhrwb1_ordered <- hhrwb1[,mixedsort(colnames(hhrwb1))] # sort variables needed to be reshaped in alphabetical and ascending order
   hhrwb1_ordered=cbind(hhrwb1_exp[1:11],hhrwb1_ordered) # combine the sorted table with id_05 and variables DO NOT needed to be reshaped
-
+  
 # 2) Extracting the variables under each group ---------------------------------------
   
 # Step 1: deleting the last integer indicating the family member, left with, for example, hh_07_ or hh_07
