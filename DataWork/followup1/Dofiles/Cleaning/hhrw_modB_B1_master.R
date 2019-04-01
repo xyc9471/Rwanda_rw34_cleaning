@@ -66,5 +66,32 @@
 
   hh_rw34 <- read_dta(file.path(DeidentifiedData,
                                 "fup1_rw34_incoming_data_toclean.dta"))
+
+# PART 4: The order of running the other r-scripts ----------------------------
   
+  # 1) Running hhrw_modB_rmdups.R     # remove dups before any other steps
+  # 2) Running hhrw_modB_reshape.R
+  # 3) Running hhrw_modB1_rmdups.R
+  # 4) Running hhrw_modB1_reshape.R
+
+# PART 5: Merging the reshaped module b and b1 into one dataset ---------------
   
+  modB_long  <- read_dta(file.path(InterData,
+                                  "modB_long.dta"))
+    
+  modB1_long <- read_dta(file.path(InterData,
+                                   "modB1_long.dta"))
+  
+  modB_B1_long <- merge(modB_long, modB1_long, by = c("id_05", "member_id"), all = T)   
+
+  # Both modB and B1 has variable named "new_age", then the merged dataset will automatically
+  # relabel them as new_age.x new_age.y, which cannot be exported into dta file
+  # so it is necessary to rename them before exporting
+  
+  names(modB_B1_long)[names(modB_B1_long)=="new_age.x"] <- "new_age_b"
+  names(modB_B1_long)[names(modB_B1_long)=="new_age.y"] <- "new_age_b1"
+  
+# PART 6: Export the reshaped and merged module b and b1 dataset --------------
+  
+  write_dta(modB_B1_long, file.path(InterData, "modB_B1_long.dta"))
+    
