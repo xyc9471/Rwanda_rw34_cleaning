@@ -25,7 +25,7 @@
     label <- str_replace(attr(var,"label"), "HH", "hh") # the right names are stored in attibutes
     list <- append(list, label) # extract the attribute labels in a list, then convert all HH to hh
   } 
-  list[-1] # deleting the funtion element
+  list <- list[-1] # deleting the funtion element
   names(hh_rw)[substr(names(hh_rw),1,1) == "v"] <- as.character(list) # replace the old names with the correct names
   
   # double check if we successfully corrected variable names

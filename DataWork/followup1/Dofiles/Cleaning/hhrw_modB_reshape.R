@@ -11,15 +11,15 @@
 
 # 1) Sorting the table ---------------------------------------------------------------
   
-  hhrw=hh_rw[5:1001] # subset anything else EXCEPT id_05 and variables DO NOT needed to be reshaped
+  hhrw=hh_rw[4:1001] # subset anything else EXCEPT id_05 and variables DO NOT needed to be reshaped
   hhrw_ordered <- hhrw[,mixedsort(colnames(hhrw))] # sort variables needed to be reshaped in alphabetical and ascending order
-  hhrw_ordered=cbind(hh_rw[1:4],hhrw_ordered) # combine the sorted table with id_05 and variables DO NOT needed to be reshaped
+  hhrw_ordered=cbind(hh_rw[1:3],hhrw_ordered) # combine the sorted table with id_05 and variables DO NOT needed to be reshaped
 
 # 2) Extracting the variables under each group ---------------------------------------
   
 # Step 1: deleting the last integer indicating the family member, left with, for example, hh_07_ or hh_07
-  colnames(hhrw_ordered)[6:1001] = substr(colnames(hhrw_ordered)[6:1001], 1, 
-                                          nchar(colnames(hhrw_ordered)[6:1001])-2)
+  colnames(hhrw_ordered)[4:1001] = substr(colnames(hhrw_ordered)[4:1001], 1, 
+                                          nchar(colnames(hhrw_ordered)[4:1001])-2)
 
 # Step 2: deleting the last underscore ("_")
 
