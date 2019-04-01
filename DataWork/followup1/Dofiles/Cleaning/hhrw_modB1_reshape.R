@@ -96,8 +96,12 @@
   
   modB1_long = modB1_long[!modB1_long$member_id > 12,]
   
-# PART 5: export the long-format data file ------------------------------------------------------
+# PART 5: removing empty column new_age
+  
+  modB1_long <- select(modB1_long, -c(new_age))
+  
+# PART 6: export the long-format data file ------------------------------------------------------
   
   write_dta(modB1_long, file.path(InterData, "modB1_long.dta"))
-  
+    
   
