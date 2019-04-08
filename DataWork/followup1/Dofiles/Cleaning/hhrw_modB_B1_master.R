@@ -75,18 +75,3 @@
   # 4) Running hhrw_modB1_reshape.R
   # 5) Running B_B1_Merge.R
 
-# PART 5: Merging the reshaped module b and b1 into one dataset ---------------
-  
-  modB_long  <- read_dta(file.path(InterData,
-                                  "modB_long.dta"))
-    
-  modB1_long <- read_dta(file.path(InterData,
-                                   "modB1_long.dta"))
-  
-  modB_B1_long <- merge(modB_long, modB1_long, by = c("id_05", "member_id"), all = T)   
-
-  
-# PART 6: Export the reshaped and merged module b and b1 dataset --------------
-  
-  write_dta(modB_B1_long, file.path(InterData, "modB_B1_long.dta"))
-    

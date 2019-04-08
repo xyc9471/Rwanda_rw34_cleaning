@@ -54,7 +54,11 @@
     new_modb1$member_id <- new_modb1$member_id + new_modb1$pl_hhmembnumber
 
     new_modb1 = subset(new_modb1, select = -c(pl_hhmembnumber)) # delete the pl_hhmembnumber
-
-# PART 4: Export the merged module B and B1
+    
+# PART 4: Append module B and B1
     
     modB_B1_long <- merge(modB_long, new_modb1, by = c("id_05", "member_id"), all.x = TRUE)
+
+# PART 5: Export the module b and b1
+    
+    write_dta(modB_B1_long, file.path(InterData, "modB_B1_long.dta"))
