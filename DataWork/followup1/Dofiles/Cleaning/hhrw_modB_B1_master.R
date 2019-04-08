@@ -73,6 +73,7 @@
   # 2) Running hhrw_modB_reshape.R
   # 3) Running hhrw_modB1_rmdups.R
   # 4) Running hhrw_modB1_reshape.R
+  # 5) Running B_B1_Merge.R
 
 # PART 5: Merging the reshaped module b and b1 into one dataset ---------------
   
