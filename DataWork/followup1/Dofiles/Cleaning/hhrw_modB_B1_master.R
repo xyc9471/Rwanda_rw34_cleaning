@@ -50,7 +50,8 @@
                 "reshape2",
                 "data.table",
                 "gtools",
-                "dplyr")
+                "dplyr",
+                "plyr")
   
   sapply(packages, function(x) {
     print(x)

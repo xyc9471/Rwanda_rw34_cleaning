@@ -33,32 +33,18 @@
   
   # Module B has current total number of members
   # Module B1 has ID of newly added member
-  # To know what is the number of newly added member in this household
-  # We can calculate it by: the total number of members (B) + member_id of the newly added member (B1)
-  # For example, in module B we know family xxx has 5 members, and in module B1 we there is one
-  # newly added member and his/her ID is 1, then we know he/she is the 6th member in this household
+  # To avoid duplicates in ID variables, add ID +16
   
-  # Step 1: Getting the current total number of members
+  # Step 1: Getting the new ID +16
   
-    modb <- select(modb, c(id_05, member_id, pl_hhmembnumber))
-  
-  # Step 2: Merge it to mod b1
-  
-    new_modb1 <- merge(modb1, modb, by.x = c("id_05", "member_id"), all.x = TRUE)
-  
-  # Step 3: Generate member_id for newly added member
-
-    new_modb1$member_id <- as.integer(new_modb1$member_id) # convert it to numeric
-    new_modb1$pl_hhmembnumber <- as.integer(new_modb1$pl_hhmembnumber)
-
-    new_modb1$member_id <- new_modb1$member_id + new_modb1$pl_hhmembnumber
-
-    new_modb1 = subset(new_modb1, select = -c(pl_hhmembnumber)) # delete the pl_hhmembnumber
+    modb1$member_id <- modb1$member_id + 16
     
-# PART 4: Append module B and B1
-    
-    modB_B1_long <- merge(modB_long, new_modb1, by = c("id_05", "member_id"), all.x = TRUE)
+# PART 4: Append module B and B1 ---------------------------------------------
+  
+    modb[1:88] <- lapply(modb[1:88], as.numeric)
+    modB_B1_long <- rbind.fill(modb, modb1)
 
-# PART 5: Export the module b and b1
+# PART 5: Export the module B and B1 -----------------------------------------
     
     write_dta(modB_B1_long, file.path(InterData, "modB_B1_long.dta"))
+    
