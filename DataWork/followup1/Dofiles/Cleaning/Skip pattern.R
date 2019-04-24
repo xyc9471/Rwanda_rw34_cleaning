@@ -149,4 +149,32 @@
 
  # 14. Other Activity (hh_10_18b == -77)
     summary(hh_bb1$hh_10_18b_other[hh_bb1$hh_10_18b == -77])
-    # return complete NA    
+    # return complete NA   
+    
+ # 15. Earnings duing Season 18 B
+    summary(hh_bb1$hh_10b)
+    # Result:
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    # -88   11500   29000   46304   50000  400000    3043 
+    
+ # 16. Season 18b Relationship
+    summary(hh_bb1$hh_10a_18a_2)
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    # -77.000   2.000   3.000   3.479   8.000   8.000    3146 
+    summary(hh_bb1$hh_10a_18a_2_oth[hh_bb1$hh_10a_18a_2 == -77])
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    # NA      NA      NA     NaN      NA      NA    3147 
+
+ # 17. Days worked in Season 18b
+    summary(hh_bb1$hh_10a_18a_3)
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    # -88     10      19     491      30   35000    3146    
+    
+ # 18. Days worked in plots in CA
+    summary(hh_bb1$hh_10a_18a_4)
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    #-88.000   0.000   6.000   6.046  16.000  30.000    3154  
+    
+    
+    
+    
